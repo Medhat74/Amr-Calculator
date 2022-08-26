@@ -15,12 +15,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
+
+  
+
   Hive.registerAdapter((OrderAdapter()));
   Hive.registerAdapter((UserAdapter()));
   Hive.registerAdapter((ItemAdapter()));
 
 
 
-  
+
   runApp(const AppRoot());
 }
