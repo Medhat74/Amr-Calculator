@@ -19,5 +19,8 @@ Future<void> main() async {
   Hive.registerAdapter((UserAdapter()));
   Hive.registerAdapter((ItemAdapter()));
 
+
+
+  
   runApp(const AppRoot());
 }
