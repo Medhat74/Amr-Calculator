@@ -1,15 +1,16 @@
+import 'package:amr_app/models/resturants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../src/app_color.dart';
 import '../../../src/app_text_style.dart';
 
 class ResturantItem extends StatelessWidget {
-  ResturantItem({Key? key,required this.fun, required this.index}) : super(key: key);
-
-  List<Map<String, String>> events = [
-    {"bgPath": "assets/images/abo_anas.png", "name": "ابو انس"},
-    {"bgPath": "assets/images/koshary_hind.png", "name": "كشري هند"},
-  ];
+  ResturantItem({required this.fun, required this.index}) ;
+  //
+  // List<Map<String, String>> events = [
+  //   {"bgPath": "assets/images/abo_anas.png", "name": "ابو انس"},
+  //   {"bgPath": "assets/images/koshary_hind.png", "name": "كشري هند"},
+  // ];
 
   final fun;
   final int index;
@@ -39,7 +40,7 @@ class ResturantItem extends StatelessWidget {
                     topLeft: Radius.circular(10),
                   ),
                   child: Image.asset(
-                    events[index]["bgPath"]!,
+                    restaurants[0].img,
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
@@ -50,7 +51,7 @@ class ResturantItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
-                    events[index]["name"]!,
+                    restaurants[0].name,
                     style:
                     AppTextStyle.bodyText().copyWith(fontFamily: "Tajawal"),
 

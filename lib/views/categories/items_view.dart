@@ -1,7 +1,9 @@
 import 'package:amr_app/blocs/item_cubit/item_cubit.dart';
+import 'package:amr_app/core/utils/naviagtion.dart';
 import 'package:amr_app/core/utils/size_config.dart';
 import 'package:amr_app/src/app_color.dart';
 import 'package:amr_app/views/categories/components/card_item.dart';
+import 'package:amr_app/views/complete_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +22,13 @@ class ItemsView extends StatelessWidget {
             child: Column(
               children: [
                 const Text("All Category"),
-
+                itemcubit.platesHub == null ?
+                Center(
+                  child: const CircularProgressIndicator(
+                      color:AppColors.KPrimaryColor),
+                ) :
                 Expanded(
-                  child: itemcubit.platesHub == null ? const CircularProgressIndicator(color:AppColors.KPrimaryColor) :
-                  GridView.builder(
+                  child: GridView.builder(
                     gridDelegate:  const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 250,
                         mainAxisExtent: 130,
@@ -37,6 +42,11 @@ class ItemsView extends StatelessWidget {
                     },
                   ),
                 ),
+                GestureDetector(
+                    onTap: (){
+                      AppNavigator.customNavigator(context: context, screen: CompleteOrderView(), finish: false);
+                    },
+                    child: Text('lol')),
 
 
 

@@ -1,4 +1,5 @@
 import 'package:amr_app/blocs/navigation_bar_cubit/navigation_bar_cubit.dart';
+import 'package:amr_app/blocs/order/order_cubit.dart';
 import 'package:amr_app/views/pre_home_view/first_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ class AppRoot extends StatelessWidget {
 
       providers: [
         BlocProvider(create: (BuildContext context) => NavigationBarCubit(),),
+        BlocProvider(create: (BuildContext context) => OrderCubit(),),
         BlocProvider(create: (BuildContext context) => ItemCubit()..getItems(),),
       ],
       child: MaterialApp(
