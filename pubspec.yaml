@@ -41,6 +41,7 @@ dependencies:
 
   # service
   hive: ^2.2.3
+  sqflite:
   dio: ^4.0.6
   #shared_preferences: ^2.0.7
 

@@ -5,6 +5,8 @@ import 'package:amr_app/views/categories/components/card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/const.dart';
+
 class ItemsView extends StatelessWidget {
   ItemsView({Key? key}) : super(key: key);
   @override
@@ -22,7 +24,7 @@ class ItemsView extends StatelessWidget {
                 const Text("All Category"),
 
                 Expanded(
-                  child: itemcubit.platesHub == null ? const CircularProgressIndicator(color:AppColors.KPrimaryColor) :
+                  child: aboAnasItems == null ? const CircularProgressIndicator(color:AppColors.KPrimaryColor) :
                   GridView.builder(
                     gridDelegate:  const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 250,
@@ -30,10 +32,10 @@ class ItemsView extends StatelessWidget {
                         childAspectRatio: 3 / 2,
                         crossAxisSpacing: 20,
                         mainAxisSpacing: 20),
-                    itemCount: itemcubit.platesHub!.data!.length,
+                    itemCount: aboAnasItems.length,
                     itemBuilder: (BuildContext context, int index){
-                      return CardItem(txt: itemcubit.platesHub!.data![index].attributes!.plateName!, imgPath: "assets/images/amr_face.png", fun: (){},
-                          price: itemcubit.platesHub!.data![index].attributes!.platePrice!);
+                      return CardItem(txt: aboAnasItems[index].name!, imgPath: "assets/images/amr_face.png", fun: (){},
+                          price: aboAnasItems[index].price!);
                     },
                   ),
                 ),

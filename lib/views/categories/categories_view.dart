@@ -25,9 +25,7 @@ class CategoriesView extends StatelessWidget {
                 "المطاعم",
                 style: AppTextStyle.headLine(),
               ),
-              ElevatedButton(onPressed: (){
-                cubit.getItems();
-              }, child: Text("dos"))
+              ElevatedButton(onPressed: (){}, child: Text("dos"))
 
             ]),
           );

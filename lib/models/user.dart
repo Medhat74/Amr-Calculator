@@ -1,12 +1,45 @@
+import 'package:amr_app/models/Order.dart';
+import 'package:amr_app/models/user_item.dart';
+import 'package:amr_app/services/sql_helper/sql_helper.dart';
+
 import 'item.dart';
 
-class User{
-  List<Item>? items;
+class User {
   String? name;
   int? id;
   double? totalPrice;
   int? checkPrice;
-  bool? isCheck;
+  int? isCheck;
 
+  User({this.name, this.id, this.totalPrice, this.checkPrice, this.isCheck});
+
+  User.fromLocalDB(Map<String, dynamic> db) {
+    id = db['id'];
+    name = db['name'];
+    checkPrice = db['checkPrice'];
+    isCheck = db['isCheck'];
+  }
+
+  List<Item> getUserItems() {
+    List<Item> items = [];
+    SqlHelper.getDataOfUser(
+      tableName: SqlHelper.userItemTableName,
+      id: id!,
+      colName: 'item_id',
+    ).then((value) {
+      for (var e in value) {
+        UserItem userItem = UserItem.fromLocalDB(e);
+        SqlHelper.getDataOfTableWithId(
+          tableName: SqlHelper.itemsTableName,
+          id: userItem.itemId!,
+        ).then((value) {
+          for(var e in value){
+            items.add(Item.fromLocalDB(e));
+          }
+        });
+      }
+    });
+    return items;
+  }
 
 }

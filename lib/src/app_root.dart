@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/item_cubit/item_cubit.dart';
+import '../blocs/order_cubit/order_cubit.dart';
+import '../blocs/user_cubit/user_cubit.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
@@ -14,7 +16,9 @@ class AppRoot extends StatelessWidget {
 
       providers: [
         BlocProvider(create: (BuildContext context) => NavigationBarCubit(),),
-        BlocProvider(create: (BuildContext context) => ItemCubit()..getItems(),),
+        BlocProvider(create: (BuildContext context) => ItemCubit(),),
+        BlocProvider(create: (BuildContext context) => UserCubit(),),
+        BlocProvider(create: (BuildContext context) => OrderCubit(),),
       ],
       child: MaterialApp(
         home: FirstView(),

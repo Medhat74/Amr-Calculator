@@ -10,7 +10,7 @@ class CardItem extends StatelessWidget {
   final String txt;
   final String imgPath;
   final fun;
-  final int price;
+  final double price;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
